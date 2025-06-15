@@ -41,16 +41,21 @@
       }
     }
     .message {
-      font-size: 5em; /* lebih gede lagi */
+      font-size: 1.4em; /* font size kecil buat HP */
       color: #702963;
       background: rgba(255,255,255,0.75);
-      padding: 40px 50px;
-      border-radius: 30px;
+      padding: 30px 40px;
+      border-radius: 25px;
       box-shadow: 0 4px 25px rgba(0,0,0,0.2);
       opacity: 0;
       transition: opacity 2s ease;
       max-width: 95vw;
       line-height: 1.1;
+    }
+    @media (min-width: 768px) {
+      .message {
+        font-size: 5em;
+      }
     }
     .show {
       opacity: 1;
@@ -83,7 +88,7 @@
 </audio>
 
 <script>
-  const flowers = ['🌸', '🌺'];
+  const flowers = ['🌸', '🌺', '🌼'];
   const openBtn = document.getElementById('openBtn');
   const msg = document.getElementById('msg');
   const music = document.getElementById('music');
@@ -95,7 +100,7 @@
     flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
     flower.style.left = Math.random() * 100 + 'vw';
     flower.style.animationDuration = (3 + Math.random() * 3) + 's';
-    flower.style.fontSize = (20 + Math.random() * 25) + 'px';
+    flower.style.fontSize = (20 + Math.random() * 30) + 'px';
     document.body.appendChild(flower);
     setTimeout(() => flower.remove(), 6000);
   }
@@ -103,9 +108,9 @@
   openBtn.addEventListener('click', () => {
     openBtn.style.display = 'none';
     msg.classList.add('show');
-    flowerInterval = setInterval(createFlower, 70); // bunga sangat banyak (sekitar 14 bunga/detik)
+    flowerInterval = setInterval(createFlower, 50);
     music.play().catch(() => {
-      alert('Klik tombol play di browser jika musik belum menyala ya!');
+      alert('Klik tombol play di browser kalau musik belum menyala ya!');
     });
   });
 </script>
